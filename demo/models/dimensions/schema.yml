@@ -1,0 +1,64 @@
+
+version: 2
+
+models:  
+  - name: dim_date
+    description: "My sql file"
+    columns:
+      - name: date_dim_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_customer
+    description: "My sql file"
+    columns:
+      - name: customer_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_store
+    description: "My sql file"
+    columns:
+      - name: store_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_staff
+    description: "My sql file"
+    columns:
+      - name: staff_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_film
+    description: "My sql file"
+    columns:
+      - name: film_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+sources:
+  - name: stg
+    database: demo_wh
+    schema: stg
+    tables:
+     - name: customer
+     - name: address
+     - name: city
+     - name: country
+     - name: staff
+     - name: store
+     - name: film
+     - name: language
+     - name: category
+     - name: film_category

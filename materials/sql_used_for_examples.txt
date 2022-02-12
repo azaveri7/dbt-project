@@ -1,0 +1,21 @@
+sql used for examples:
+
+-------------------------------------------------------------
+incremental:
+
+select * from stg.payment
+
+select count(*) from stg.payment;
+select count(*) from dwh.payment_inc;
+
+select max(payment_date) from payment_inc
+
+select * from stg.payment order by payment_date desc limit 5;
+select * from dwh.payment_inc order by payment_date desc limit 5;
+
+select * from dwh.payment_inc where payment_id=6
+
+INSERT INTO stg.payment (customer_id, staff_id, rental_id, amount, payment_date) VALUES(14, 1, 13780, 15, '2021-08-31 08:09:00');
+
+-------------------------------------------------------------
+

@@ -1,0 +1,63 @@
+
+version: 2
+
+models:
+  - name: my_first_dbt_model
+    description: "A starter dbt model"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+     
+  - name: dim_date_inc
+    columns:
+      - name: dim_date_id
+        tests:
+          - unique
+          - not_null
+
+  - name: my_second_dbt_model
+    description: "A starter dbt model"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      
+  - name: hello_world
+    description: "My sql file"
+    columns:
+      - name: customer_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: film_test
+    description: "My sql file for film from stg to dwh"
+    columns:
+      - name: rating
+        description: "The primary key for this table"
+        tests:
+          - accepted-values:
+              values: ['NC-17','PG-13','G','R','PG']
+
+      - name: language_id
+        tests:
+          - accepted-values:
+              values: [1,2]
+              quote: false
+
+
+sources:
+  - name: stg_example
+    database: demo_wh
+    schema: stg
+    tables:
+     - name: film
+     - name: customer     
+
+  

@@ -1,0 +1,77 @@
+windows: 
+
+----------------------------------------------------
+postgres: 
+
+https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
+
+create DB sakila_wh
+create schema stg in sakila_wh
+
+#put the SQL files in C:\
+#change the schema in the files to stg (already done in the materials)
+
+https://kb.objectrocket.com/postgresql/how-to-run-an-sql-file-in-postgres-846
+
+sakila files: 
+https://github.com/jOOQ/sakila/tree/main
+
+#path to psql
+C:\Program Files\PostgreSQL\13\bin
+psql -h 127.0.0.1 -d sakila_wh -U postgres -f C:\sakila_postgres_schema.sql
+psql -h 127.0.0.1 -d sakila_wh -U postgres -f C:\postgres-sakila-insert-data.sql
+
+
+-----------------------------------------------------
+
+# move sakila time forward
+select 
+extract(epoch from current_timestamp)-
+extract(epoch from '2006-02-14 15:16:03'::timestamp)
+
+update rental 
+set rental_date = rental_date + interval '491962115 second'
+
+update payment 
+set payment_date = payment_date + interval '491962115 second'
+
+
+
+
+-----------docker postgres with sakila (option 2) ---------
+
+https://hub.docker.com/r/frantiseks/postgres-sakila
+
+--------------------------------------------------------------------
+https://git-scm.com/downloads
+-------------------------------------------------------------------
+https://notepad-plus-plus.org/downloads/
+--------------------------------------------------------------------
+https://atom.io/
+--------------------------------------------------------------------
+https://dbeaver.io/
+--------------------------------------------------------------------
+
+
+dbt install:
+
+https://docs.getdbt.com/dbt-cli/installation
+
+install python
+enable developer mode
+pip install dbt
+
+-------------------------------------------------------------------
+
+python for windows : 
+https://www.python.org/downloads/windows/
+
+
+add to user path: 
+C:\Users\Administrator\AppData\Local\Programs\Python\Python39\
+C:\Users\Administrator\AppData\Local\Programs\Python\Python39\Scripts
+
+# test python 
+enable developer mode
+
+pip install dbt

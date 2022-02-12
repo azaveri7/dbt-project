@@ -1,0 +1,1 @@
+select * from dwh.film_test ft where replacement_cost > 29
